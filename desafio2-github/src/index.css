@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+
+
+.bg-circles {
+  background-image: 
+    radial-gradient(circle at top right, #005CFF, transparent 400px), 
+    radial-gradient(circle at bottom left, #005CFF, transparent 300px);
+
+    
+}
