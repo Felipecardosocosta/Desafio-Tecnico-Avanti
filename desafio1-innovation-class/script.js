@@ -1,84 +1,8 @@
-const dataProdutos = [
-    {id:1, tag:'Novo', nome:"", preco:100.00,precoComDesconto:79.90,porcentagemDesconto:10 , parcela:"10x de R$ 7,90",img:"./assets/Images/homem-mock.png"},
-    {id:2, tag:'Novo', nome:"", preco:100.00,precoComDesconto:79.90,porcentagemDesconto:10 , parcela:"10x de R$ 7,90",img:"./assets/Images/homem-mock.png"},
-    {id:3, tag:'Novo', nome:"", preco:100.00,precoComDesconto:79.90,porcentagemDesconto:10 , parcela:"10x de R$ 7,90",img:"./assets/Images/homem-mock.png"},
-    {id:4, tag:'', nome:"", preco:100.00,precoComDesconto:79.90,porcentagemDesconto:10 , parcela:"10x de R$ 7,90",img:"./assets/Images/homem-mock.png"},
-    {id:5, tag:'', nome:"", preco:100.00,precoComDesconto:79.90,porcentagemDesconto:10 , parcela:"10x de R$ 7,90",img:"./assets/Images/homem-mock.png"},
-    {id:6, tag:'', nome:"", preco:100.00,precoComDesconto:79.90,porcentagemDesconto:10 , parcela:"10x de R$ 7,90",img:"./assets/Images/homem-mock.png"},
-    {id:7, tag:'', nome:"", preco:100.00,precoComDesconto:79.90,porcentagemDesconto:10 , parcela:"10x de R$ 7,90",img:"./assets/Images/homem-mock.png"},
-    {id:8, tag:'', nome:"", preco:100.00,precoComDesconto:79.90,porcentagemDesconto:10 , parcela:"10x de R$ 7,90",img:"./assets/Images/homem-mock.png"},
-    {id:9, tag:'', nome:"", preco:100.00,precoComDesconto:79.90,porcentagemDesconto:10 , parcela:"10x de R$ 7,90",img:"./assets/Images/homem-mock.png"},
-]
 
-function estruturaCard(produto) {
-
-
-    return `
-    <div id='meuCard${produto.id}' class="swiper-slide w-60 h-102 ">
-                        <div
-                            class="card w-11/12 h-full flex flex-col border border-gray-400 shadow-gray-600 rounded-md p-2">
-                            ${produto.tag? `
-                                <span
-                                class=" w-1/4 bg-[#00264E] text-white md:text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
-                                ${produto.tag}
-                            </span>
-                                
-                                `:`
-                            <span
-                                class=" w-1/4 bg-white text-white md:text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
-                                ''
-                            </span>
-                                
-                                `}
-
-                            <img src="./assets/Images/homem-mock.png" class="w-55" alt="">
-                            <!-- 
-                            <div class="bg-[url(./assets/Images/homem-mock.png)] bg-cover bg-center h-65 ">
-                            </div> -->
-                            <div class="text-left text-[14px]  text-[#303030]">
-                                <h3>Lorem Impsum dolor sit amet consectetuer adipiscing elit</h3>
-
-                                <div class="flex items-center gap-3">
-                                    <div>
-                                        <p class="line-through text-gray-500 text-[12px]">R$100.00</p>
-                                        <p class="font-bold text-[16px]">R$79.90</p>
-
-                                    </div>
-
-                                    <div class="bg-[#5EC0BE] rounded-lg py-0.5 px-1.5 cursor-pointer text-[11px]">
-                                        <a class="text-white underline ">10% <span class="font-bold">OFF</span></a>
-
-                                    </div>
-
-                                </div>
-
-
-                                <div>
-                                    <p class="text-[#303030] text-[12px]">ou em ate <span class="font-semibold">10x de
-                                            R$7,90</span>
-                                    </p>
-                                </div>
-
-                            </div>
-                            <button
-                                class="bg-[#005cff] mt-2 hover:bg-[#004cd2] text-white font-bold text-[14px] px-6 py-2.5 rounded-lg transition-colors cursor-pointer">
-                                Comprar
-                            </button>
-
-
-                        </div>
-
-    
-    `
-    
-}
-
-
-
-let swiper = new Swiper(".mySwiper", {
-    slidesPerView: 3,
+let swiper = new Swiper(".mySwiper1", {
+    slidesPerView: 5,
     slidesPerGroup: 3,
-    spaceBetween: 2,
+
     loop: true,
     pagination: {
         el: ".swiper-pagination",
@@ -87,10 +11,58 @@ let swiper = new Swiper(".mySwiper", {
     navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
+    },
+    breakpoints: {
+
+       
+        480: {
+            slidesPerView: 2,
+
+        },
+     
+        768: {
+            slidesPerView: 4,
+
+        },
+        1024: {
+            slidesPerView: 5,
+        }
+
+
     }
 });
 
+let swiper2 = new Swiper(".mySwiper2", {
+    slidesPerView: 2,
+    slidesPerGroup: 3,
+    loop: true,
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+    breakpoints: {
 
+        // when window width is >= 480px
+        480: {
+            slidesPerView: 2,
+
+        },
+        
+        768: {
+            slidesPerView: 4,
+
+        },
+        1024:{
+            slidesPerView: 5,
+        }
+
+
+    }
+});
 
 
 //drop menu
@@ -99,7 +71,6 @@ const dropConteiner = document.getElementById("drop-menu-container")
 const dropOver = document.getElementById("drop-menu-over")
 const dropCategoria = document.querySelectorAll(".cadegoria")
 const menuCategoria = document.getElementById("category-menu")
-
 
 
 // mobileHtml
@@ -111,8 +82,6 @@ const mobileAtendimento = document.getElementById('mobile-atendimento')
 const arrowInstitucional = document.getElementById("arrow-institucional")
 const arrowCentral = document.getElementById("arrow-central")
 const arrowAtendimento = document.getElementById("arrow-atendimento")
-
-
 
 function handleSerch(e) {
     e.preventDefault()
@@ -127,7 +96,9 @@ function handleSerch(e) {
 
 }
 
-
+function handleRgister(e){
+    e.preventDefault()
+}
 
 dropMenu.addEventListener("mouseenter", () => {
     dropConteiner.style.display = "flex"
@@ -164,13 +135,6 @@ dropConteiner.addEventListener("mouseleave", (e) => {
     }
 });
 
-
-
-const isMobile = () => window.innerWidth < 1024
-const isDesktop = () => window.innerWidth > 1024
-
-
-
 //footer mobile
 function esconderConteinerMobile() {
     mobileAtendimento.style.display = "none"
@@ -181,13 +145,13 @@ function esconderConteinerMobile() {
     arrowInstitucional.classList.remove('rotacionado')
 
 }
-const displeyarrowFooter = (div,arrow)=>{
+const displeyarrowFooter = (div, arrow) => {
 
-    const display=window.getComputedStyle(div);
-    
-    
+    const display = window.getComputedStyle(div);
 
-    if (div.style.display ==="flex") {
+
+
+    if (div.style.display === "flex") {
         esconderConteinerMobile()
         return
     }
@@ -197,19 +161,19 @@ const displeyarrowFooter = (div,arrow)=>{
 
 
 }
-arrowAtendimento.addEventListener("click",()=>{
-    displeyarrowFooter(mobileAtendimento,arrowAtendimento)
+arrowAtendimento.addEventListener("click", () => {
+    displeyarrowFooter(mobileAtendimento, arrowAtendimento)
 
 })
 
-arrowCentral.addEventListener("click",()=>{
-    
-   displeyarrowFooter(mobileCentral,arrowCentral)
+arrowCentral.addEventListener("click", () => {
+
+    displeyarrowFooter(mobileCentral, arrowCentral)
 })
-arrowInstitucional.addEventListener("click",()=>{
-    
-    displeyarrowFooter(mobileInstitucional,arrowInstitucional)
-    
+arrowInstitucional.addEventListener("click", () => {
+
+    displeyarrowFooter(mobileInstitucional, arrowInstitucional)
+
 
 })
 

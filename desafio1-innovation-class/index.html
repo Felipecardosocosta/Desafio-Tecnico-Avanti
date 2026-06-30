@@ -14,20 +14,19 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
 
     <style>
         .meuCard {
-            /* width: calc(var(--spacing) * 58) !important;
-            height: calc(var(--spacing) * 102) !important; */
-
-
-
             height: calc(var(--spacing) * 91.5) !important;
             width: calc(var(--spacing) * 43.5) !important;
 
+        }
 
-
+        .cardTest {
+            width: calc(var(--spacing) * 60) !important;
+            margin-right: 10px;
+            height: calc(var(--spacing) * 102);
 
         }
 
@@ -81,6 +80,24 @@
             bottom: 0 !important;
         }
 
+        .custom-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .custom-scroll::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 999px;
+        }
+
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #bdbdbd;
+            border-radius: 999px;
+        }
+
+        .custom-scroll::-webkit-scrollbar-thumb:hover {
+            background: #999;
+        }
+
 
         @keyframes anim {
             from {
@@ -117,25 +134,35 @@
 
 <body class="font-[" Nunito_Sans"]">
 
-    <header class=" fixed z-50  w-full flex flex-col items-center bg-white md:h-37 drop-shadow-sm top-0">
+    <header class=" fixed z-50 h-57.5  w-full flex flex-col items-center bg-white md:h-37 drop-shadow-sm top-0">
 
         <!-- tag desconto -->
-        <div class="w-full flex justify-center text-white bg-[#005CFF] p-1 text-[14px] font-semibold">
-            <p>Ganhe <span class="bg-[#6220C1] rounded-md p-0.5">R$10,00</span> de desconto no seu primeiro pedido.
-                Utilize o cupom DESCONTO10</p>
+        <div
+            class="w-full flex justify-center text-center text-white bg-[#005CFF] p-1 text-[14px] font-semibold h-16 items-center md:h-auto  ">
+            <p>Ganhe <span class="bg-[#6220C1] rounded-md p-0.5">R$10,00</span> de desconto no seu primeiro pedido.<br
+                    class="md:hidden">
+
+                Utilize o cupom DESCONTO10
+
+            </p>
         </div>
 
 
-        <div class="flex flex-col items-center justify-center  ">
+        <div class="flex md:flex-col w-full h-full md:h-auto md:w-auto items-center justify-center  ">
 
 
             <!-- Logo  busca usuario/carrinho -->
-            <div class="flex w-full py-6">
+            <div class="flex  w-full py-6 flex-col h-full md:h-auto justify-between md:justify-normal md:flex-row ">
 
-                <div class="w-2/3 flex  gap-14">
+                <div class="md:w-2/3 flex w-full justify-around md:justify-normal items-center gap-14">
 
-                    <img src="./assets/svg/AVANTI-logo.svg" class="w-40" alt="">
-                    <form class="border flex w-md justify-center rounded-md p-0.5 " onsubmit="handleSerch(event)">
+                    <img src="./assets/svg/menu-hamburguer.svg" class="md:hidden w-5.5" alt="">
+
+
+                    <img src="./assets/svg/AVANTI-logo.svg" class="w-37 md:w-40" alt="">
+
+                    <form class=" hidden md:flex border  w-md justify-center rounded-md p-0.5 "
+                        onsubmit="handleSerch(event)">
                         <input type="text" id="search" class="w-full outline-none p-0.5 pl-3  "
                             placeholder="Digite aqui o que você procura">
                         <button type="submit" class="cursor-pointer">
@@ -144,12 +171,14 @@
 
                     </form>
 
+
+                    <img src="./assets/svg/cart-mobile.svg" class="md:hidden " alt="">
                 </div>
 
-                <div class="flex w-1/3 justify-end gap-6 ">
-                    <div class="flex gap-1 ">
+                <div class="hidden md:flex w-1/3 justify-end gap-6 ">
+                    <div class=" gap-1 flex">
                         <img src="./assets/svg/user.svg" class="w-6" alt="">
-                        <div class="text-[12px]">
+                        <div class="text-[12px] ">
                             <p>Olá</p>
                             <p>Nome do cliente!</p>
                         </div>
@@ -157,10 +186,25 @@
                     <img src="./assets/svg/cart.svg" alt="">
                 </div>
 
+
+                <div class="w-full flex justify-center items-center md:hidden">
+                    <form class="flex border  w-90 h-12.5 justify-center rounded-md p-0.5 "
+                        onsubmit="handleSerch(event)">
+                        <input type="text" id="search" class="w-5/6 outline-none p-0.5 pl-3  "
+                            placeholder="Digite aqui o que você procura">
+                        <button type="submit" class="cursor-pointer ">
+                            <img src="./assets/svg/search.svg" class="h-5.5" alt="">
+                        </button>
+
+                    </form>
+
+
+                </div>
+
             </div>
 
             <!-- navegação -->
-            <nav class="w-full bg-white mx-auto   overflow-hidden">
+            <nav class=" hidden md:block w-full bg-white mx-auto  overflow-hidden">
 
                 <ul class="lg:flex justify-center items-center gap-7.5 text-[14px]  text-[#000000] hidden">
 
@@ -185,10 +229,10 @@
 
 
                 <!--  drop-menu -->
-                <div class="w-full hidden  max-w-315 mx-auto py-5 drop-shadow-md  absolute z-50 animate-[anim_0.2s_ease-in]"
+                <div class=" w-full hidden  max-w-315 mx-auto py-5 drop-shadow-md  absolute z-50 animate-[anim_0.2s_ease-in]"
                     id="drop-menu-container">
                     <div id="drop-menu-over"
-                        class="w-full max-w-60 bg-[#f9f9f9] max-h-82.25 overflow-y-auto  py-4 text-[#303030]">
+                        class="custom-scroll w-full max-w-60 bg-[#f9f9f9] max-h-82.25 overflow-y-auto  py-4 text-[#303030]">
 
                         <ul class="flex flex-col gap-4 ">
                             <li>
@@ -340,7 +384,7 @@
 
     </header>
 
-    <main class="mt-37">
+    <main class="mt-57 md:mt-37">
         <!-- banner -->
         <section class="w-full h-76.5 md:h-127 bg-[#E7E7EA]  flex items-center ">
             <div class="w-full flex md:justify-center items-center">
@@ -359,442 +403,498 @@
         </section>
 
         <!-- carrossel  -->
-        <section class=" hidden w-full md:h-150 p-10 mt-25 sm:flex flex-col items-center">
+        <section class=" w-full md:h-150 p-10 mt-25 flex flex-col items-center">
+                <div class=" flex flex-col w-89.5 h-115 md:h-125 md:w-332 items-center ">
 
-                <div class="flex justify-between items-center w-285   pb-3 ">
-                    <h2 class="md:text-[20px]  font-bold text-black">Lançamentos</h2>
-                    <a href="#" class="">Ver Mais</a>
-                </div>
-                <div class="swiper mySwiper carrossel ">
-                    <div class="swiper-wrapper">
+                    <div class="flex justify-between items-center w-full md:px-3 md:pb-0 pb-3 ">
+                        <h2 class="md:text-[20px]  font-bold text-black">Lançamentos</h2>
+                        <a href="#" class="">Ver Mais</a>
+                    </div>
+                    <!-- conteiner-principal-swiper -->
+                    <div class="swiper mySwiper2">
+                        <div class="swiper-wrapper">
 
-                        <div id="meuCard" class="swiper-slide w-60 h-102 ">
-                            <div
-                                class="card w-11/12 h-full flex flex-col border border-gray-400 shadow-gray-600 rounded-md p-2">
-                                <span
-                                    class=" w-1/4 bg-[#00264E] text-white md:text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
-                                    Novo
-                                </span>
+                            <div id="meuCard1" class="swiper-slide">
+                                <div
+                                    class="w-43.5 h-91  md:w-59.5 md:h-103 flex flex-col border border-gray-400 shadow-gray-600 rounded-md p-2">
+                                    <span
+                                        class="w-10  md:w-1/4 bg-[#00264E] text-white text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
+                                        Novo
+                                    </span>
 
-                                <img src="./assets/Images/homem-mock.png" class="w-55" alt="">
-                                <!-- 
+                                    <img src="./assets/Images/homem-mock.png" class="w-55" alt="">
+                                    <!-- 
                             <div class="bg-[url(./assets/Images/homem-mock.png)] bg-cover bg-center h-65 ">
                             </div> -->
-                                <div class="text-left text-[14px]  text-[#303030]">
-                                    <h3>Lorem Impsum dolor sit amet consectetuer adipiscing elit</h3>
+                                    <div class="text-left text-[14px]  text-[#303030]">
+                                        <h3>Lorem Impsum dolor sit amet consectetuer adipiscing elit</h3>
 
-                                    <div class="flex items-center gap-3">
+                                        <div class="flex items-center gap-3">
+                                            <div>
+                                                <p class="line-through text-gray-500 text-[12px]">R$100.00</p>
+                                                <p class="font-bold text-[16px]">R$79.90</p>
+
+                                            </div>
+
+                                            <div
+                                                class="bg-[#5EC0BE] rounded-lg py-0.5 px-1.5 cursor-pointer text-[11px]">
+                                                <a class="text-white underline ">10% <span
+                                                        class="font-bold">OFF</span></a>
+
+                                            </div>
+
+                                        </div>
+
+
                                         <div>
-                                            <p class="line-through text-gray-500 text-[12px]">R$100.00</p>
-                                            <p class="font-bold text-[16px]">R$79.90</p>
-
-                                        </div>
-
-                                        <div class="bg-[#5EC0BE] rounded-lg py-0.5 px-1.5 cursor-pointer text-[11px]">
-                                            <a class="text-white underline ">10% <span class="font-bold">OFF</span></a>
-
+                                            <p class="text-[#303030] text-[12px]">ou em ate <span
+                                                    class="font-semibold">10x
+                                                    de
+                                                    R$7,90</span>
+                                            </p>
                                         </div>
 
                                     </div>
+                                    <button
+                                        class="bg-[#005cff] mt-2 hover:bg-[#004cd2] text-white font-bold text-[14px] px-6 py-2.5 rounded-lg transition-colors cursor-pointer">
+                                        Comprar
+                                    </button>
 
-
-                                    <div>
-                                        <p class="text-[#303030] text-[12px]">ou em ate <span class="font-semibold">10x
-                                                de
-                                                R$7,90</span>
-                                        </p>
-                                    </div>
 
                                 </div>
-                                <button
-                                    class="bg-[#005cff] mt-2 hover:bg-[#004cd2] text-white font-bold text-[14px] px-6 py-2.5 rounded-lg transition-colors cursor-pointer">
-                                    Comprar
-                                </button>
 
 
                             </div>
-                        </div>
-                        <div id="meuCard" class="swiper-slide w-60 h-102 ">
-                            <div
-                                class="card w-11/12 h-full flex flex-col border border-gray-400 shadow-gray-600 rounded-md p-2">
-                                <span
-                                    class=" w-1/4 bg-[#00264E] text-white md:text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
-                                    Novo
-                                </span>
 
-                                <img src="./assets/Images/homem-mock.png" class="w-55" alt="">
-                                <!-- 
+
+                            <div id="meuCard1" class="swiper-slide ">
+                                <div
+                                    class="w-43.5 h-91  md:w-59.5 md:h-103 flex flex-col border border-gray-400 shadow-gray-600 rounded-md p-2">
+                                    <span
+                                        class="w-10  md:w-1/4 bg-[#00264E] text-white text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
+                                        Novo
+                                    </span>
+
+                                    <img src="./assets/Images/homem-mock.png" class="w-55" alt="">
+                                    <!-- 
                             <div class="bg-[url(./assets/Images/homem-mock.png)] bg-cover bg-center h-65 ">
                             </div> -->
-                                <div class="text-left text-[14px]  text-[#303030]">
-                                    <h3>Lorem Impsum dolor sit amet consectetuer adipiscing elit</h3>
+                                    <div class="text-left text-[14px]  text-[#303030]">
+                                        <h3>Lorem Impsum dolor sit amet consectetuer adipiscing elit</h3>
 
-                                    <div class="flex items-center gap-3">
+                                        <div class="flex items-center gap-3">
+                                            <div>
+                                                <p class="line-through text-gray-500 text-[12px]">R$100.00</p>
+                                                <p class="font-bold text-[16px]">R$79.90</p>
+
+                                            </div>
+
+                                            <div
+                                                class="bg-[#5EC0BE] rounded-lg py-0.5 px-1.5 cursor-pointer text-[11px]">
+                                                <a class="text-white underline ">10% <span
+                                                        class="font-bold">OFF</span></a>
+
+                                            </div>
+
+                                        </div>
+
+
                                         <div>
-                                            <p class="line-through text-gray-500 text-[12px]">R$100.00</p>
-                                            <p class="font-bold text-[16px]">R$79.90</p>
-
-                                        </div>
-
-                                        <div class="bg-[#5EC0BE] rounded-lg py-0.5 px-1.5 cursor-pointer text-[11px]">
-                                            <a class="text-white underline ">10% <span class="font-bold">OFF</span></a>
-
+                                            <p class="text-[#303030] text-[12px]">ou em ate <span
+                                                    class="font-semibold">10x
+                                                    de
+                                                    R$7,90</span>
+                                            </p>
                                         </div>
 
                                     </div>
+                                    <button
+                                        class="bg-[#005cff] mt-2 hover:bg-[#004cd2] text-white font-bold text-[14px] px-6 py-2.5 rounded-lg transition-colors cursor-pointer">
+                                        Comprar
+                                    </button>
 
-
-                                    <div>
-                                        <p class="text-[#303030] text-[12px]">ou em ate <span class="font-semibold">10x
-                                                de
-                                                R$7,90</span>
-                                        </p>
-                                    </div>
 
                                 </div>
-                                <button
-                                    class="bg-[#005cff] mt-2 hover:bg-[#004cd2] text-white font-bold text-[14px] px-6 py-2.5 rounded-lg transition-colors cursor-pointer">
-                                    Comprar
-                                </button>
 
 
                             </div>
-                        </div>
-                        <div id="meuCard" class="swiper-slide w-60 h-102 ">
-                            <div
-                                class="card w-11/12 h-full flex flex-col border border-gray-400 shadow-gray-600 rounded-md p-2">
-                                <span
-                                    class=" w-1/4 bg-[#00264E] text-white md:text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
-                                    Novo
-                                </span>
+                            <div id="meuCard1" class="swiper-slide ">
+                                <div
+                                    class="w-43.5 h-91  md:w-59.5 md:h-103 flex flex-col border border-gray-400 shadow-gray-600 rounded-md p-2">
+                                    <span
+                                        class="w-10  md:w-1/4 bg-[#00264E] text-white text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
+                                        Novo
+                                    </span>
 
-                                <img src="./assets/Images/homem-mock.png" class="w-55" alt="">
-                                <!-- 
+                                    <img src="./assets/Images/homem-mock.png" class="w-55" alt="">
+                                    <!-- 
                             <div class="bg-[url(./assets/Images/homem-mock.png)] bg-cover bg-center h-65 ">
                             </div> -->
-                                <div class="text-left text-[14px]  text-[#303030]">
-                                    <h3>Lorem Impsum dolor sit amet consectetuer adipiscing elit</h3>
+                                    <div class="text-left text-[14px]  text-[#303030]">
+                                        <h3>Lorem Impsum dolor sit amet consectetuer adipiscing elit</h3>
 
-                                    <div class="flex items-center gap-3">
+                                        <div class="flex items-center gap-3">
+                                            <div>
+                                                <p class="line-through text-gray-500 text-[12px]">R$100.00</p>
+                                                <p class="font-bold text-[16px]">R$79.90</p>
+
+                                            </div>
+
+                                            <div
+                                                class="bg-[#5EC0BE] rounded-lg py-0.5 px-1.5 cursor-pointer text-[11px]">
+                                                <a class="text-white underline ">10% <span
+                                                        class="font-bold">OFF</span></a>
+
+                                            </div>
+
+                                        </div>
+
+
                                         <div>
-                                            <p class="line-through text-gray-500 text-[12px]">R$100.00</p>
-                                            <p class="font-bold text-[16px]">R$79.90</p>
-
-                                        </div>
-
-                                        <div class="bg-[#5EC0BE] rounded-lg py-0.5 px-1.5 cursor-pointer text-[11px]">
-                                            <a class="text-white underline ">10% <span class="font-bold">OFF</span></a>
-
+                                            <p class="text-[#303030] text-[12px]">ou em ate <span
+                                                    class="font-semibold">10x
+                                                    de
+                                                    R$7,90</span>
+                                            </p>
                                         </div>
 
                                     </div>
+                                    <button
+                                        class="bg-[#005cff] mt-2 hover:bg-[#004cd2] text-white font-bold text-[14px] px-6 py-2.5 rounded-lg transition-colors cursor-pointer">
+                                        Comprar
+                                    </button>
 
-
-                                    <div>
-                                        <p class="text-[#303030] text-[12px]">ou em ate <span class="font-semibold">10x
-                                                de
-                                                R$7,90</span>
-                                        </p>
-                                    </div>
 
                                 </div>
-                                <button
-                                    class="bg-[#005cff] mt-2 hover:bg-[#004cd2] text-white font-bold text-[14px] px-6 py-2.5 rounded-lg transition-colors cursor-pointer">
-                                    Comprar
-                                </button>
 
 
                             </div>
-                        </div>
-                        <div id="meuCard" class="swiper-slide w-60 h-102 ">
-                            <div
-                                class="card w-11/12 h-full flex flex-col border border-gray-400 shadow-gray-600 rounded-md p-2">
-                                <span
-                                    class=" w-1/4 bg-[#00264E] text-white md:text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
-                                    Novo
-                                </span>
+                            <div id="meuCard1" class="swiper-slide ">
+                                <div
+                                    class="w-43.5 h-91  md:w-59.5 md:h-103 flex flex-col border border-gray-400 shadow-gray-600 rounded-md p-2">
+                                    <span
+                                        class="w-10  md:w-1/4 bg-[#00264E] text-white text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
+                                        Novo
+                                    </span>
 
-                                <img src="./assets/Images/homem-mock.png" class="w-55" alt="">
-                                <!-- 
+                                    <img src="./assets/Images/homem-mock.png" class="w-55" alt="">
+                                    <!-- 
                             <div class="bg-[url(./assets/Images/homem-mock.png)] bg-cover bg-center h-65 ">
                             </div> -->
-                                <div class="text-left text-[14px]  text-[#303030]">
-                                    <h3>Lorem Impsum dolor sit amet consectetuer adipiscing elit</h3>
+                                    <div class="text-left text-[14px]  text-[#303030]">
+                                        <h3>Lorem Impsum dolor sit amet consectetuer adipiscing elit</h3>
 
-                                    <div class="flex items-center gap-3">
+                                        <div class="flex items-center gap-3">
+                                            <div>
+                                                <p class="line-through text-gray-500 text-[12px]">R$100.00</p>
+                                                <p class="font-bold text-[16px]">R$79.90</p>
+
+                                            </div>
+
+                                            <div
+                                                class="bg-[#5EC0BE] rounded-lg py-0.5 px-1.5 cursor-pointer text-[11px]">
+                                                <a class="text-white underline ">10% <span
+                                                        class="font-bold">OFF</span></a>
+
+                                            </div>
+
+                                        </div>
+
+
                                         <div>
-                                            <p class="line-through text-gray-500 text-[12px]">R$100.00</p>
-                                            <p class="font-bold text-[16px]">R$79.90</p>
-
-                                        </div>
-
-                                        <div class="bg-[#5EC0BE] rounded-lg py-0.5 px-1.5 cursor-pointer text-[11px]">
-                                            <a class="text-white underline ">10% <span class="font-bold">OFF</span></a>
-
+                                            <p class="text-[#303030] text-[12px]">ou em ate <span
+                                                    class="font-semibold">10x
+                                                    de
+                                                    R$7,90</span>
+                                            </p>
                                         </div>
 
                                     </div>
+                                    <button
+                                        class="bg-[#005cff] mt-2 hover:bg-[#004cd2] text-white font-bold text-[14px] px-6 py-2.5 rounded-lg transition-colors cursor-pointer">
+                                        Comprar
+                                    </button>
 
-
-                                    <div>
-                                        <p class="text-[#303030] text-[12px]">ou em ate <span class="font-semibold">10x
-                                                de
-                                                R$7,90</span>
-                                        </p>
-                                    </div>
 
                                 </div>
-                                <button
-                                    class="bg-[#005cff] mt-2 hover:bg-[#004cd2] text-white font-bold text-[14px] px-6 py-2.5 rounded-lg transition-colors cursor-pointer">
-                                    Comprar
-                                </button>
 
 
                             </div>
-                        </div>
-                        <div id="meuCard" class="swiper-slide w-60 h-102 ">
-                            <div
-                                class="card w-11/12 h-full flex flex-col border border-gray-400 shadow-gray-600 rounded-md p-2">
-                                <span
-                                    class=" w-1/4 bg-[#00264E] text-white md:text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
-                                    Novo
-                                </span>
+                            <div id="meuCard1" class="swiper-slide ">
+                                <div
+                                    class="w-43.5 h-91  md:w-59.5 md:h-103 flex flex-col border border-gray-400 shadow-gray-600 rounded-md p-2">
+                                    <span
+                                        class="w-10  md:w-1/4 bg-[#00264E] text-white text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
+                                        Novo
+                                    </span>
 
-                                <img src="./assets/Images/homem-mock.png" class="w-55" alt="">
-                                <!-- 
+                                    <img src="./assets/Images/homem-mock.png" class="w-55" alt="">
+                                    <!-- 
                             <div class="bg-[url(./assets/Images/homem-mock.png)] bg-cover bg-center h-65 ">
                             </div> -->
-                                <div class="text-left text-[14px]  text-[#303030]">
-                                    <h3>Lorem Impsum dolor sit amet consectetuer adipiscing elit</h3>
+                                    <div class="text-left text-[14px]  text-[#303030]">
+                                        <h3>Lorem Impsum dolor sit amet consectetuer adipiscing elit</h3>
 
-                                    <div class="flex items-center gap-3">
+                                        <div class="flex items-center gap-3">
+                                            <div>
+                                                <p class="line-through text-gray-500 text-[12px]">R$100.00</p>
+                                                <p class="font-bold text-[16px]">R$79.90</p>
+
+                                            </div>
+
+                                            <div
+                                                class="bg-[#5EC0BE] rounded-lg py-0.5 px-1.5 cursor-pointer text-[11px]">
+                                                <a class="text-white underline ">10% <span
+                                                        class="font-bold">OFF</span></a>
+
+                                            </div>
+
+                                        </div>
+
+
                                         <div>
-                                            <p class="line-through text-gray-500 text-[12px]">R$100.00</p>
-                                            <p class="font-bold text-[16px]">R$79.90</p>
-
-                                        </div>
-
-                                        <div class="bg-[#5EC0BE] rounded-lg py-0.5 px-1.5 cursor-pointer text-[11px]">
-                                            <a class="text-white underline ">10% <span class="font-bold">OFF</span></a>
-
+                                            <p class="text-[#303030] text-[12px]">ou em ate <span
+                                                    class="font-semibold">10x
+                                                    de
+                                                    R$7,90</span>
+                                            </p>
                                         </div>
 
                                     </div>
+                                    <button
+                                        class="bg-[#005cff] mt-2 hover:bg-[#004cd2] text-white font-bold text-[14px] px-6 py-2.5 rounded-lg transition-colors cursor-pointer">
+                                        Comprar
+                                    </button>
 
-
-                                    <div>
-                                        <p class="text-[#303030] text-[12px]">ou em ate <span class="font-semibold">10x
-                                                de
-                                                R$7,90</span>
-                                        </p>
-                                    </div>
 
                                 </div>
-                                <button
-                                    class="bg-[#005cff] mt-2 hover:bg-[#004cd2] text-white font-bold text-[14px] px-6 py-2.5 rounded-lg transition-colors cursor-pointer">
-                                    Comprar
-                                </button>
 
 
                             </div>
-                        </div>
-                        <div id="meuCard" class="swiper-slide w-60 h-102 ">
-                            <div
-                                class="card w-11/12 h-full flex flex-col border border-gray-400 shadow-gray-600 rounded-md p-2">
-                                <span
-                                    class=" w-1/4 bg-[#00264E] text-white md:text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
-                                    Novo
-                                </span>
+                            <div id="meuCard1" class="swiper-slide ">
+                                <div
+                                    class="w-43.5 h-91  md:w-59.5 md:h-103 flex flex-col border border-gray-400 shadow-gray-600 rounded-md p-2">
+                                    <span
+                                        class="w-10  md:w-1/4 bg-[#00264E] text-white text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
+                                        Novo
+                                    </span>
 
-                                <img src="./assets/Images/homem-mock.png" class="w-55" alt="">
-                                <!-- 
+                                    <img src="./assets/Images/homem-mock.png" class="w-55" alt="">
+                                    <!-- 
                             <div class="bg-[url(./assets/Images/homem-mock.png)] bg-cover bg-center h-65 ">
                             </div> -->
-                                <div class="text-left text-[14px]  text-[#303030]">
-                                    <h3>Lorem Impsum dolor sit amet consectetuer adipiscing elit</h3>
+                                    <div class="text-left text-[14px]  text-[#303030]">
+                                        <h3>Lorem Impsum dolor sit amet consectetuer adipiscing elit</h3>
 
-                                    <div class="flex items-center gap-3">
+                                        <div class="flex items-center gap-3">
+                                            <div>
+                                                <p class="line-through text-gray-500 text-[12px]">R$100.00</p>
+                                                <p class="font-bold text-[16px]">R$79.90</p>
+
+                                            </div>
+
+                                            <div
+                                                class="bg-[#5EC0BE] rounded-lg py-0.5 px-1.5 cursor-pointer text-[11px]">
+                                                <a class="text-white underline ">10% <span
+                                                        class="font-bold">OFF</span></a>
+
+                                            </div>
+
+                                        </div>
+
+
                                         <div>
-                                            <p class="line-through text-gray-500 text-[12px]">R$100.00</p>
-                                            <p class="font-bold text-[16px]">R$79.90</p>
-
-                                        </div>
-
-                                        <div class="bg-[#5EC0BE] rounded-lg py-0.5 px-1.5 cursor-pointer text-[11px]">
-                                            <a class="text-white underline ">10% <span class="font-bold">OFF</span></a>
-
+                                            <p class="text-[#303030] text-[12px]">ou em ate <span
+                                                    class="font-semibold">10x
+                                                    de
+                                                    R$7,90</span>
+                                            </p>
                                         </div>
 
                                     </div>
+                                    <button
+                                        class="bg-[#005cff] mt-2 hover:bg-[#004cd2] text-white font-bold text-[14px] px-6 py-2.5 rounded-lg transition-colors cursor-pointer">
+                                        Comprar
+                                    </button>
 
-
-                                    <div>
-                                        <p class="text-[#303030] text-[12px]">ou em ate <span class="font-semibold">10x
-                                                de
-                                                R$7,90</span>
-                                        </p>
-                                    </div>
 
                                 </div>
-                                <button
-                                    class="bg-[#005cff] mt-2 hover:bg-[#004cd2] text-white font-bold text-[14px] px-6 py-2.5 rounded-lg transition-colors cursor-pointer">
-                                    Comprar
-                                </button>
 
 
                             </div>
-                        </div>
-                        <div id="meuCard" class="swiper-slide w-60 h-102 ">
-                            <div
-                                class="card w-11/12 h-full flex flex-col border border-gray-400 shadow-gray-600 rounded-md p-2">
-                                <span
-                                    class=" w-1/4 bg-[#00264E] text-white md:text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
-                                    Novo
-                                </span>
+                            <div id="meuCard1" class="swiper-slide ">
+                                <div
+                                    class="w-43.5 h-91  md:w-59.5 md:h-103 flex flex-col border border-gray-400 shadow-gray-600 rounded-md p-2">
+                                    <span
+                                        class="w-10  md:w-1/4 bg-[#00264E] text-white text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
+                                        Novo
+                                    </span>
 
-                                <img src="./assets/Images/homem-mock.png" class="w-55" alt="">
-                                <!-- 
+                                    <img src="./assets/Images/homem-mock.png" class="w-55" alt="">
+                                    <!-- 
                             <div class="bg-[url(./assets/Images/homem-mock.png)] bg-cover bg-center h-65 ">
                             </div> -->
-                                <div class="text-left text-[14px]  text-[#303030]">
-                                    <h3>Lorem Impsum dolor sit amet consectetuer adipiscing elit</h3>
+                                    <div class="text-left text-[14px]  text-[#303030]">
+                                        <h3>Lorem Impsum dolor sit amet consectetuer adipiscing elit</h3>
 
-                                    <div class="flex items-center gap-3">
+                                        <div class="flex items-center gap-3">
+                                            <div>
+                                                <p class="line-through text-gray-500 text-[12px]">R$100.00</p>
+                                                <p class="font-bold text-[16px]">R$79.90</p>
+
+                                            </div>
+
+                                            <div
+                                                class="bg-[#5EC0BE] rounded-lg py-0.5 px-1.5 cursor-pointer text-[11px]">
+                                                <a class="text-white underline ">10% <span
+                                                        class="font-bold">OFF</span></a>
+
+                                            </div>
+
+                                        </div>
+
+
                                         <div>
-                                            <p class="line-through text-gray-500 text-[12px]">R$100.00</p>
-                                            <p class="font-bold text-[16px]">R$79.90</p>
-
-                                        </div>
-
-                                        <div class="bg-[#5EC0BE] rounded-lg py-0.5 px-1.5 cursor-pointer text-[11px]">
-                                            <a class="text-white underline ">10% <span class="font-bold">OFF</span></a>
-
+                                            <p class="text-[#303030] text-[12px]">ou em ate <span
+                                                    class="font-semibold">10x
+                                                    de
+                                                    R$7,90</span>
+                                            </p>
                                         </div>
 
                                     </div>
+                                    <button
+                                        class="bg-[#005cff] mt-2 hover:bg-[#004cd2] text-white font-bold text-[14px] px-6 py-2.5 rounded-lg transition-colors cursor-pointer">
+                                        Comprar
+                                    </button>
 
-
-                                    <div>
-                                        <p class="text-[#303030] text-[12px]">ou em ate <span class="font-semibold">10x
-                                                de
-                                                R$7,90</span>
-                                        </p>
-                                    </div>
 
                                 </div>
-                                <button
-                                    class="bg-[#005cff] mt-2 hover:bg-[#004cd2] text-white font-bold text-[14px] px-6 py-2.5 rounded-lg transition-colors cursor-pointer">
-                                    Comprar
-                                </button>
 
 
                             </div>
-                        </div>
-                        <div id="meuCard" class="swiper-slide w-60 h-102 ">
-                            <div
-                                class="card w-11/12 h-full flex flex-col border border-gray-400 shadow-gray-600 rounded-md p-2">
-                                <span
-                                    class=" w-1/4 bg-[#00264E] text-white md:text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
-                                    Novo
-                                </span>
+                            <div id="meuCard1" class="swiper-slide ">
+                                <div
+                                    class="w-43.5 h-91  md:w-59.5 md:h-103 flex flex-col border border-gray-400 shadow-gray-600 rounded-md p-2">
+                                    <span
+                                        class="w-10  md:w-1/4 bg-[#00264E] text-white text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
+                                        Novo
+                                    </span>
 
-                                <img src="./assets/Images/homem-mock.png" class="w-55" alt="">
-                                <!-- 
+                                    <img src="./assets/Images/homem-mock.png" class="w-55" alt="">
+                                    <!-- 
                             <div class="bg-[url(./assets/Images/homem-mock.png)] bg-cover bg-center h-65 ">
                             </div> -->
-                                <div class="text-left text-[14px]  text-[#303030]">
-                                    <h3>Lorem Impsum dolor sit amet consectetuer adipiscing elit</h3>
+                                    <div class="text-left text-[14px]  text-[#303030]">
+                                        <h3>Lorem Impsum dolor sit amet consectetuer adipiscing elit</h3>
 
-                                    <div class="flex items-center gap-3">
+                                        <div class="flex items-center gap-3">
+                                            <div>
+                                                <p class="line-through text-gray-500 text-[12px]">R$100.00</p>
+                                                <p class="font-bold text-[16px]">R$79.90</p>
+
+                                            </div>
+
+                                            <div
+                                                class="bg-[#5EC0BE] rounded-lg py-0.5 px-1.5 cursor-pointer text-[11px]">
+                                                <a class="text-white underline ">10% <span
+                                                        class="font-bold">OFF</span></a>
+
+                                            </div>
+
+                                        </div>
+
+
                                         <div>
-                                            <p class="line-through text-gray-500 text-[12px]">R$100.00</p>
-                                            <p class="font-bold text-[16px]">R$79.90</p>
-
-                                        </div>
-
-                                        <div class="bg-[#5EC0BE] rounded-lg py-0.5 px-1.5 cursor-pointer text-[11px]">
-                                            <a class="text-white underline ">10% <span class="font-bold">OFF</span></a>
-
+                                            <p class="text-[#303030] text-[12px]">ou em ate <span
+                                                    class="font-semibold">10x
+                                                    de
+                                                    R$7,90</span>
+                                            </p>
                                         </div>
 
                                     </div>
+                                    <button
+                                        class="bg-[#005cff] mt-2 hover:bg-[#004cd2] text-white font-bold text-[14px] px-6 py-2.5 rounded-lg transition-colors cursor-pointer">
+                                        Comprar
+                                    </button>
 
-
-                                    <div>
-                                        <p class="text-[#303030] text-[12px]">ou em ate <span class="font-semibold">10x
-                                                de
-                                                R$7,90</span>
-                                        </p>
-                                    </div>
 
                                 </div>
-                                <button
-                                    class="bg-[#005cff] mt-2 hover:bg-[#004cd2] text-white font-bold text-[14px] px-6 py-2.5 rounded-lg transition-colors cursor-pointer">
-                                    Comprar
-                                </button>
 
 
                             </div>
-                        </div>
-                        <div id="meuCard" class="swiper-slide w-60 h-102 ">
-                            <div
-                                class="card w-11/12 h-full flex flex-col border border-gray-400 shadow-gray-600 rounded-md p-2">
-                                <span
-                                    class=" w-1/4 bg-[#00264E] text-white md:text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
-                                    Novo
-                                </span>
+                            <div id="meuCard1" class="swiper-slide ">
+                                <div
+                                    class="w-43.5 h-91  md:w-59.5 md:h-103 flex flex-col border border-gray-400 shadow-gray-600 rounded-md p-2">
+                                    <span
+                                        class="w-10  md:w-1/4 bg-[#00264E] text-white text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
+                                        Novo
+                                    </span>
 
-                                <img src="./assets/Images/homem-mock.png" class="w-55" alt="">
-                                <!-- 
+                                    <img src="./assets/Images/homem-mock.png" class="w-55" alt="">
+                                    <!-- 
                             <div class="bg-[url(./assets/Images/homem-mock.png)] bg-cover bg-center h-65 ">
                             </div> -->
-                                <div class="text-left text-[14px]  text-[#303030]">
-                                    <h3>Lorem Impsum dolor sit amet consectetuer adipiscing elit</h3>
+                                    <div class="text-left text-[14px]  text-[#303030]">
+                                        <h3>Lorem Impsum dolor sit amet consectetuer adipiscing elit</h3>
 
-                                    <div class="flex items-center gap-3">
+                                        <div class="flex items-center gap-3">
+                                            <div>
+                                                <p class="line-through text-gray-500 text-[12px]">R$100.00</p>
+                                                <p class="font-bold text-[16px]">R$79.90</p>
+
+                                            </div>
+
+                                            <div
+                                                class="bg-[#5EC0BE] rounded-lg py-0.5 px-1.5 cursor-pointer text-[11px]">
+                                                <a class="text-white underline ">10% <span
+                                                        class="font-bold">OFF</span></a>
+
+                                            </div>
+
+                                        </div>
+
+
                                         <div>
-                                            <p class="line-through text-gray-500 text-[12px]">R$100.00</p>
-                                            <p class="font-bold text-[16px]">R$79.90</p>
-
-                                        </div>
-
-                                        <div class="bg-[#5EC0BE] rounded-lg py-0.5 px-1.5 cursor-pointer text-[11px]">
-                                            <a class="text-white underline ">10% <span class="font-bold">OFF</span></a>
-
+                                            <p class="text-[#303030] text-[12px]">ou em ate <span
+                                                    class="font-semibold">10x
+                                                    de
+                                                    R$7,90</span>
+                                            </p>
                                         </div>
 
                                     </div>
+                                    <button
+                                        class="bg-[#005cff] mt-2 hover:bg-[#004cd2] text-white font-bold text-[14px] px-6 py-2.5 rounded-lg transition-colors cursor-pointer">
+                                        Comprar
+                                    </button>
 
-
-                                    <div>
-                                        <p class="text-[#303030] text-[12px]">ou em ate <span class="font-semibold">10x
-                                                de
-                                                R$7,90</span>
-                                        </p>
-                                    </div>
 
                                 </div>
-                                <button
-                                    class="bg-[#005cff] mt-2 hover:bg-[#004cd2] text-white font-bold text-[14px] px-6 py-2.5 rounded-lg transition-colors cursor-pointer">
-                                    Comprar
-                                </button>
 
 
                             </div>
+
+
+
+
+
+
+
+
+
                         </div>
+                        <div class="swiper-pagination"></div>
 
-
+                        <div class="swiper-button-prev prev-1 cursor-pointer ">
+                            <img src="./assets/svg/previous-arrow.svg" alt="" class="hidden md:flex">
+                        </div>
+                        <div class="swiper-button-next next-1 cursor-pointer ">
+                            <img src="./assets/svg/next-arrow.svg" alt="" class="hidden md:block">
+                        </div>
 
                     </div>
-                    <div class="swiper-pagination"></div>
-
-                    <div class="swiper-button-prev prev-1 cursor-pointer ">
-                        <img src="./assets/svg/previous-arrow.svg" alt="" class="hidden md:flex">
-                    </div>
-                    <div class="swiper-button-next next-1 cursor-pointer ">
-                        <img src="./assets/svg/next-arrow.svg" alt="" class="hidden md:block">
-                    </div>
-
                 </div>
 
 
@@ -988,484 +1088,474 @@
         </section>
 
         <!-- segundo carrossel -->
-        <section class=" w-full md:h-150 p-5 md:p-10 mt-25 flex flex-col items-center">
+        <section class="  w-full md:h-150 md:p-10 md:mt-25 flex flex-col  items-center">
+            <div class=" flex flex-col w-89.5 h-115 md:h-125 md:w-332 items-center ">
 
-            <div class="flex justify-between items-center w-full md:w-285  pb-3 ">
-                <h2 class="md:text-[20px]  font-bold text-black">Lançamentos</h2>
-                <a href="#" class="">Ver Mais</a>
-            </div>
-            <div class="swiper mySwiper carrossel w-3/4">
-                <div class="swiper-wrapper">
+                <div class="flex justify-between items-center w-full md:px-3 md:pb-0 pb-3 ">
+                    <h2 class="md:text-[20px]  font-bold text-black">Lançamentos</h2>
+                    <a href="#" class="">Ver Mais</a>
+                </div>
+                <!-- conteiner-principal-swiper -->
+                <div class="swiper mySwiper2">
+                    <div class="swiper-wrapper">
 
-                    <div id="meuCard1" class="meuCard w-43.5 h-91.5 swiper-slide  ">
-                        <div
-                            class="card w-11/12 h-full flex flex-col border border-gray-400 shadow-gray-600 rounded-md p-2">
-                            <span
-                                class="w-10 md:w-1/4 bg-[#00264E] text-white text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
-                                Novo
-                            </span>
+                        <div id="meuCard1" class="swiper-slide">
+                            <div
+                                class="w-43.5 h-91  md:w-59.5 md:h-103 flex flex-col border border-gray-400 shadow-gray-600 rounded-md p-2">
+                                <span
+                                    class="w-10  md:w-1/4 bg-[#00264E] text-white text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
+                                    Novo
+                                </span>
 
-                            <img src="./assets/Images/homem-mock.png" class="w-55" alt="">
-                            <!-- 
+                                <img src="./assets/Images/homem-mock.png" class="w-55" alt="">
+                                <!-- 
                             <div class="bg-[url(./assets/Images/homem-mock.png)] bg-cover bg-center h-65 ">
                             </div> -->
-                            <div class="text-left text-[14px]  text-[#303030]">
-                                <h3>Lorem Impsum dolor sit amet consectetuer adipiscing elit</h3>
+                                <div class="text-left text-[14px]  text-[#303030]">
+                                    <h3>Lorem Impsum dolor sit amet consectetuer adipiscing elit</h3>
 
-                                <div class="flex items-center gap-3">
+                                    <div class="flex items-center gap-3">
+                                        <div>
+                                            <p class="line-through text-gray-500 text-[12px]">R$100.00</p>
+                                            <p class="font-bold text-[16px]">R$79.90</p>
+
+                                        </div>
+
+                                        <div class="bg-[#5EC0BE] rounded-lg py-0.5 px-1.5 cursor-pointer text-[11px]">
+                                            <a class="text-white underline ">10% <span class="font-bold">OFF</span></a>
+
+                                        </div>
+
+                                    </div>
+
+
                                     <div>
-                                        <p class="line-through text-gray-500 text-[12px]">R$100.00</p>
-                                        <p class="font-bold text-[16px]">R$79.90</p>
-
-                                    </div>
-
-                                    <div class="bg-[#5EC0BE] rounded-lg py-0.5 px-1.5 cursor-pointer text-[11px]">
-                                        <a class="text-white underline ">10% <span class="font-bold">OFF</span></a>
-
+                                        <p class="text-[#303030] text-[12px]">ou em ate <span class="font-semibold">10x
+                                                de
+                                                R$7,90</span>
+                                        </p>
                                     </div>
 
                                 </div>
+                                <button
+                                    class="bg-[#005cff] mt-2 hover:bg-[#004cd2] text-white font-bold text-[14px] px-6 py-2.5 rounded-lg transition-colors cursor-pointer">
+                                    Comprar
+                                </button>
 
-
-                                <div>
-                                    <p class="text-[#303030] text-[12px]">ou em ate <span class="font-semibold">10x de
-                                            R$7,90</span>
-                                    </p>
-                                </div>
 
                             </div>
-                            <button
-                                class="bg-[#005cff] mt-2 hover:bg-[#004cd2] text-white font-bold text-[14px] px-6 py-2.5 rounded-lg transition-colors cursor-pointer">
-                                Comprar
-                            </button>
 
 
                         </div>
-                    </div>
-                    <div id="meuCard1" class="meuCard w-43.5 h-91.5 swiper-slide  ">
-                        <div
-                            class="card w-11/12 h-full flex flex-col border border-gray-400 shadow-gray-600 rounded-md p-2">
-                            <span
-                                class="w-10 md:w-1/4 bg-[#00264E] text-white text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
-                                Novo
-                            </span>
+                        <div id="meuCard1" class="swiper-slide ">
+                            <div
+                                class="w-43.5 h-91  md:w-59.5 md:h-103 flex flex-col border border-gray-400 shadow-gray-600 rounded-md p-2">
+                                <span
+                                    class="w-10  md:w-1/4 bg-[#00264E] text-white text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
+                                    Novo
+                                </span>
 
-                            <img src="./assets/Images/homem-mock.png" class="w-55" alt="">
-                            <!-- 
+                                <img src="./assets/Images/homem-mock.png" class="w-55" alt="">
+                                <!-- 
                             <div class="bg-[url(./assets/Images/homem-mock.png)] bg-cover bg-center h-65 ">
                             </div> -->
-                            <div class="text-left text-[14px]  text-[#303030]">
-                                <h3>Lorem Impsum dolor sit amet consectetuer adipiscing elit</h3>
+                                <div class="text-left text-[14px]  text-[#303030]">
+                                    <h3>Lorem Impsum dolor sit amet consectetuer adipiscing elit</h3>
 
-                                <div class="flex items-center gap-3">
+                                    <div class="flex items-center gap-3">
+                                        <div>
+                                            <p class="line-through text-gray-500 text-[12px]">R$100.00</p>
+                                            <p class="font-bold text-[16px]">R$79.90</p>
+
+                                        </div>
+
+                                        <div class="bg-[#5EC0BE] rounded-lg py-0.5 px-1.5 cursor-pointer text-[11px]">
+                                            <a class="text-white underline ">10% <span class="font-bold">OFF</span></a>
+
+                                        </div>
+
+                                    </div>
+
+
                                     <div>
-                                        <p class="line-through text-gray-500 text-[12px]">R$100.00</p>
-                                        <p class="font-bold text-[16px]">R$79.90</p>
-
-                                    </div>
-
-                                    <div class="bg-[#5EC0BE] rounded-lg py-0.5 px-1.5 cursor-pointer text-[11px]">
-                                        <a class="text-white underline ">10% <span class="font-bold">OFF</span></a>
-
+                                        <p class="text-[#303030] text-[12px]">ou em ate <span class="font-semibold">10x
+                                                de
+                                                R$7,90</span>
+                                        </p>
                                     </div>
 
                                 </div>
+                                <button
+                                    class="bg-[#005cff] mt-2 hover:bg-[#004cd2] text-white font-bold text-[14px] px-6 py-2.5 rounded-lg transition-colors cursor-pointer">
+                                    Comprar
+                                </button>
 
-
-                                <div>
-                                    <p class="text-[#303030] text-[12px]">ou em ate <span class="font-semibold">10x de
-                                            R$7,90</span>
-                                    </p>
-                                </div>
 
                             </div>
-                            <button
-                                class="bg-[#005cff] mt-2 hover:bg-[#004cd2] text-white font-bold text-[14px] px-6 py-2.5 rounded-lg transition-colors cursor-pointer">
-                                Comprar
-                            </button>
 
 
                         </div>
-                    </div>
-                    <div id="meuCard1" class="meuCard w-43.5 h-91.5 swiper-slide  ">
-                        <div
-                            class="card w-11/12 h-full flex flex-col border border-gray-400 shadow-gray-600 rounded-md p-2">
-                            <span
-                                class="w-10 md:w-1/4 bg-[#00264E] text-white text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
-                                Novo
-                            </span>
+                        <div id="meuCard1" class="swiper-slide ">
+                            <div
+                                class="w-43.5 h-91  md:w-59.5 md:h-103 flex flex-col border border-gray-400 shadow-gray-600 rounded-md p-2">
+                                <span
+                                    class="w-10  md:w-1/4 bg-[#00264E] text-white text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
+                                    Novo
+                                </span>
 
-                            <img src="./assets/Images/homem-mock.png" class="w-55" alt="">
-                            <!-- 
+                                <img src="./assets/Images/homem-mock.png" class="w-55" alt="">
+                                <!-- 
                             <div class="bg-[url(./assets/Images/homem-mock.png)] bg-cover bg-center h-65 ">
                             </div> -->
-                            <div class="text-left text-[14px]  text-[#303030]">
-                                <h3>Lorem Impsum dolor sit amet consectetuer adipiscing elit</h3>
+                                <div class="text-left text-[14px]  text-[#303030]">
+                                    <h3>Lorem Impsum dolor sit amet consectetuer adipiscing elit</h3>
 
-                                <div class="flex items-center gap-3">
+                                    <div class="flex items-center gap-3">
+                                        <div>
+                                            <p class="line-through text-gray-500 text-[12px]">R$100.00</p>
+                                            <p class="font-bold text-[16px]">R$79.90</p>
+
+                                        </div>
+
+                                        <div class="bg-[#5EC0BE] rounded-lg py-0.5 px-1.5 cursor-pointer text-[11px]">
+                                            <a class="text-white underline ">10% <span class="font-bold">OFF</span></a>
+
+                                        </div>
+
+                                    </div>
+
+
                                     <div>
-                                        <p class="line-through text-gray-500 text-[12px]">R$100.00</p>
-                                        <p class="font-bold text-[16px]">R$79.90</p>
-
-                                    </div>
-
-                                    <div class="bg-[#5EC0BE] rounded-lg py-0.5 px-1.5 cursor-pointer text-[11px]">
-                                        <a class="text-white underline ">10% <span class="font-bold">OFF</span></a>
-
+                                        <p class="text-[#303030] text-[12px]">ou em ate <span class="font-semibold">10x
+                                                de
+                                                R$7,90</span>
+                                        </p>
                                     </div>
 
                                 </div>
+                                <button
+                                    class="bg-[#005cff] mt-2 hover:bg-[#004cd2] text-white font-bold text-[14px] px-6 py-2.5 rounded-lg transition-colors cursor-pointer">
+                                    Comprar
+                                </button>
 
-
-                                <div>
-                                    <p class="text-[#303030] text-[12px]">ou em ate <span class="font-semibold">10x de
-                                            R$7,90</span>
-                                    </p>
-                                </div>
 
                             </div>
-                            <button
-                                class="bg-[#005cff] mt-2 hover:bg-[#004cd2] text-white font-bold text-[14px] px-6 py-2.5 rounded-lg transition-colors cursor-pointer">
-                                Comprar
-                            </button>
 
 
                         </div>
-                    </div>
-                    <div id="meuCard1" class="meuCard w-43.5 h-91.5 swiper-slide  ">
-                        <div
-                            class="card w-11/12 h-full flex flex-col border border-gray-400 shadow-gray-600 rounded-md p-2">
-                            <span
-                                class="w-10 md:w-1/4 bg-[#00264E] text-white text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
-                                Novo
-                            </span>
+                        <div id="meuCard1" class="swiper-slide ">
+                            <div
+                                class="w-43.5 h-91  md:w-59.5 md:h-103 flex flex-col border border-gray-400 shadow-gray-600 rounded-md p-2">
+                                <span
+                                    class="w-10  md:w-1/4 bg-[#00264E] text-white text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
+                                    Novo
+                                </span>
 
-                            <img src="./assets/Images/homem-mock.png" class="w-55" alt="">
-                            <!-- 
+                                <img src="./assets/Images/homem-mock.png" class="w-55" alt="">
+                                <!-- 
                             <div class="bg-[url(./assets/Images/homem-mock.png)] bg-cover bg-center h-65 ">
                             </div> -->
-                            <div class="text-left text-[14px]  text-[#303030]">
-                                <h3>Lorem Impsum dolor sit amet consectetuer adipiscing elit</h3>
+                                <div class="text-left text-[14px]  text-[#303030]">
+                                    <h3>Lorem Impsum dolor sit amet consectetuer adipiscing elit</h3>
 
-                                <div class="flex items-center gap-3">
+                                    <div class="flex items-center gap-3">
+                                        <div>
+                                            <p class="line-through text-gray-500 text-[12px]">R$100.00</p>
+                                            <p class="font-bold text-[16px]">R$79.90</p>
+
+                                        </div>
+
+                                        <div class="bg-[#5EC0BE] rounded-lg py-0.5 px-1.5 cursor-pointer text-[11px]">
+                                            <a class="text-white underline ">10% <span class="font-bold">OFF</span></a>
+
+                                        </div>
+
+                                    </div>
+
+
                                     <div>
-                                        <p class="line-through text-gray-500 text-[12px]">R$100.00</p>
-                                        <p class="font-bold text-[16px]">R$79.90</p>
-
-                                    </div>
-
-                                    <div class="bg-[#5EC0BE] rounded-lg py-0.5 px-1.5 cursor-pointer text-[11px]">
-                                        <a class="text-white underline ">10% <span class="font-bold">OFF</span></a>
-
+                                        <p class="text-[#303030] text-[12px]">ou em ate <span class="font-semibold">10x
+                                                de
+                                                R$7,90</span>
+                                        </p>
                                     </div>
 
                                 </div>
+                                <button
+                                    class="bg-[#005cff] mt-2 hover:bg-[#004cd2] text-white font-bold text-[14px] px-6 py-2.5 rounded-lg transition-colors cursor-pointer">
+                                    Comprar
+                                </button>
 
-
-                                <div>
-                                    <p class="text-[#303030] text-[12px]">ou em ate <span class="font-semibold">10x de
-                                            R$7,90</span>
-                                    </p>
-                                </div>
 
                             </div>
-                            <button
-                                class="bg-[#005cff] mt-2 hover:bg-[#004cd2] text-white font-bold text-[14px] px-6 py-2.5 rounded-lg transition-colors cursor-pointer">
-                                Comprar
-                            </button>
 
 
                         </div>
-                    </div>
-                    <div id="meuCard1" class="meuCard w-43.5 h-91.5 swiper-slide  ">
-                        <div
-                            class="card w-11/12 h-full flex flex-col border border-gray-400 shadow-gray-600 rounded-md p-2">
-                            <span
-                                class="w-10 md:w-1/4 bg-[#00264E] text-white text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
-                                Novo
-                            </span>
+                        <div id="meuCard1" class="swiper-slide ">
+                            <div
+                                class="w-43.5 h-91  md:w-59.5 md:h-103 flex flex-col border border-gray-400 shadow-gray-600 rounded-md p-2">
+                                <span
+                                    class="w-10  md:w-1/4 bg-[#00264E] text-white text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
+                                    Novo
+                                </span>
 
-                            <img src="./assets/Images/homem-mock.png" class="w-55" alt="">
-                            <!-- 
+                                <img src="./assets/Images/homem-mock.png" class="w-55" alt="">
+                                <!-- 
                             <div class="bg-[url(./assets/Images/homem-mock.png)] bg-cover bg-center h-65 ">
                             </div> -->
-                            <div class="text-left text-[14px]  text-[#303030]">
-                                <h3>Lorem Impsum dolor sit amet consectetuer adipiscing elit</h3>
+                                <div class="text-left text-[14px]  text-[#303030]">
+                                    <h3>Lorem Impsum dolor sit amet consectetuer adipiscing elit</h3>
 
-                                <div class="flex items-center gap-3">
+                                    <div class="flex items-center gap-3">
+                                        <div>
+                                            <p class="line-through text-gray-500 text-[12px]">R$100.00</p>
+                                            <p class="font-bold text-[16px]">R$79.90</p>
+
+                                        </div>
+
+                                        <div class="bg-[#5EC0BE] rounded-lg py-0.5 px-1.5 cursor-pointer text-[11px]">
+                                            <a class="text-white underline ">10% <span class="font-bold">OFF</span></a>
+
+                                        </div>
+
+                                    </div>
+
+
                                     <div>
-                                        <p class="line-through text-gray-500 text-[12px]">R$100.00</p>
-                                        <p class="font-bold text-[16px]">R$79.90</p>
-
-                                    </div>
-
-                                    <div class="bg-[#5EC0BE] rounded-lg py-0.5 px-1.5 cursor-pointer text-[11px]">
-                                        <a class="text-white underline ">10% <span class="font-bold">OFF</span></a>
-
+                                        <p class="text-[#303030] text-[12px]">ou em ate <span class="font-semibold">10x
+                                                de
+                                                R$7,90</span>
+                                        </p>
                                     </div>
 
                                 </div>
+                                <button
+                                    class="bg-[#005cff] mt-2 hover:bg-[#004cd2] text-white font-bold text-[14px] px-6 py-2.5 rounded-lg transition-colors cursor-pointer">
+                                    Comprar
+                                </button>
 
-
-                                <div>
-                                    <p class="text-[#303030] text-[12px]">ou em ate <span class="font-semibold">10x de
-                                            R$7,90</span>
-                                    </p>
-                                </div>
 
                             </div>
-                            <button
-                                class="bg-[#005cff] mt-2 hover:bg-[#004cd2] text-white font-bold text-[14px] px-6 py-2.5 rounded-lg transition-colors cursor-pointer">
-                                Comprar
-                            </button>
 
 
                         </div>
-                    </div>
-                    <div id="meuCard1" class="meuCard w-43.5 h-91.5 swiper-slide  ">
-                        <div
-                            class="card w-11/12 h-full flex flex-col border border-gray-400 shadow-gray-600 rounded-md p-2">
-                            <span
-                                class="w-10 md:w-1/4 bg-[#00264E] text-white text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
-                                Novo
-                            </span>
+                        <div id="meuCard1" class="swiper-slide ">
+                            <div
+                                class="w-43.5 h-91  md:w-59.5 md:h-103 flex flex-col border border-gray-400 shadow-gray-600 rounded-md p-2">
+                                <span
+                                    class="w-10  md:w-1/4 bg-[#00264E] text-white text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
+                                    Novo
+                                </span>
 
-                            <img src="./assets/Images/homem-mock.png" class="w-55" alt="">
-                            <!-- 
+                                <img src="./assets/Images/homem-mock.png" class="w-55" alt="">
+                                <!-- 
                             <div class="bg-[url(./assets/Images/homem-mock.png)] bg-cover bg-center h-65 ">
                             </div> -->
-                            <div class="text-left text-[14px]  text-[#303030]">
-                                <h3>Lorem Impsum dolor sit amet consectetuer adipiscing elit</h3>
+                                <div class="text-left text-[14px]  text-[#303030]">
+                                    <h3>Lorem Impsum dolor sit amet consectetuer adipiscing elit</h3>
 
-                                <div class="flex items-center gap-3">
+                                    <div class="flex items-center gap-3">
+                                        <div>
+                                            <p class="line-through text-gray-500 text-[12px]">R$100.00</p>
+                                            <p class="font-bold text-[16px]">R$79.90</p>
+
+                                        </div>
+
+                                        <div class="bg-[#5EC0BE] rounded-lg py-0.5 px-1.5 cursor-pointer text-[11px]">
+                                            <a class="text-white underline ">10% <span class="font-bold">OFF</span></a>
+
+                                        </div>
+
+                                    </div>
+
+
                                     <div>
-                                        <p class="line-through text-gray-500 text-[12px]">R$100.00</p>
-                                        <p class="font-bold text-[16px]">R$79.90</p>
-
-                                    </div>
-
-                                    <div class="bg-[#5EC0BE] rounded-lg py-0.5 px-1.5 cursor-pointer text-[11px]">
-                                        <a class="text-white underline ">10% <span class="font-bold">OFF</span></a>
-
+                                        <p class="text-[#303030] text-[12px]">ou em ate <span class="font-semibold">10x
+                                                de
+                                                R$7,90</span>
+                                        </p>
                                     </div>
 
                                 </div>
+                                <button
+                                    class="bg-[#005cff] mt-2 hover:bg-[#004cd2] text-white font-bold text-[14px] px-6 py-2.5 rounded-lg transition-colors cursor-pointer">
+                                    Comprar
+                                </button>
 
-
-                                <div>
-                                    <p class="text-[#303030] text-[12px]">ou em ate <span class="font-semibold">10x de
-                                            R$7,90</span>
-                                    </p>
-                                </div>
 
                             </div>
-                            <button
-                                class="bg-[#005cff] mt-2 hover:bg-[#004cd2] text-white font-bold text-[14px] px-6 py-2.5 rounded-lg transition-colors cursor-pointer">
-                                Comprar
-                            </button>
 
 
                         </div>
-                    </div>
-                    <div id="meuCard1" class="meuCard w-43.5 h-91.5 swiper-slide  ">
-                        <div
-                            class="card w-11/12 h-full flex flex-col border border-gray-400 shadow-gray-600 rounded-md p-2">
-                            <span
-                                class="w-10 md:w-1/4 bg-[#00264E] text-white text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
-                                Novo
-                            </span>
+                        <div id="meuCard1" class="swiper-slide ">
+                            <div
+                                class="w-43.5 h-91  md:w-59.5 md:h-103 flex flex-col border border-gray-400 shadow-gray-600 rounded-md p-2">
+                                <span
+                                    class="w-10  md:w-1/4 bg-[#00264E] text-white text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
+                                    Novo
+                                </span>
 
-                            <img src="./assets/Images/homem-mock.png" class="w-55" alt="">
-                            <!-- 
+                                <img src="./assets/Images/homem-mock.png" class="w-55" alt="">
+                                <!-- 
                             <div class="bg-[url(./assets/Images/homem-mock.png)] bg-cover bg-center h-65 ">
                             </div> -->
-                            <div class="text-left text-[14px]  text-[#303030]">
-                                <h3>Lorem Impsum dolor sit amet consectetuer adipiscing elit</h3>
+                                <div class="text-left text-[14px]  text-[#303030]">
+                                    <h3>Lorem Impsum dolor sit amet consectetuer adipiscing elit</h3>
 
-                                <div class="flex items-center gap-3">
+                                    <div class="flex items-center gap-3">
+                                        <div>
+                                            <p class="line-through text-gray-500 text-[12px]">R$100.00</p>
+                                            <p class="font-bold text-[16px]">R$79.90</p>
+
+                                        </div>
+
+                                        <div class="bg-[#5EC0BE] rounded-lg py-0.5 px-1.5 cursor-pointer text-[11px]">
+                                            <a class="text-white underline ">10% <span class="font-bold">OFF</span></a>
+
+                                        </div>
+
+                                    </div>
+
+
                                     <div>
-                                        <p class="line-through text-gray-500 text-[12px]">R$100.00</p>
-                                        <p class="font-bold text-[16px]">R$79.90</p>
-
-                                    </div>
-
-                                    <div class="bg-[#5EC0BE] rounded-lg py-0.5 px-1.5 cursor-pointer text-[11px]">
-                                        <a class="text-white underline ">10% <span class="font-bold">OFF</span></a>
-
+                                        <p class="text-[#303030] text-[12px]">ou em ate <span class="font-semibold">10x
+                                                de
+                                                R$7,90</span>
+                                        </p>
                                     </div>
 
                                 </div>
+                                <button
+                                    class="bg-[#005cff] mt-2 hover:bg-[#004cd2] text-white font-bold text-[14px] px-6 py-2.5 rounded-lg transition-colors cursor-pointer">
+                                    Comprar
+                                </button>
 
-
-                                <div>
-                                    <p class="text-[#303030] text-[12px]">ou em ate <span class="font-semibold">10x de
-                                            R$7,90</span>
-                                    </p>
-                                </div>
 
                             </div>
-                            <button
-                                class="bg-[#005cff] mt-2 hover:bg-[#004cd2] text-white font-bold text-[14px] px-6 py-2.5 rounded-lg transition-colors cursor-pointer">
-                                Comprar
-                            </button>
 
 
                         </div>
-                    </div>
-                    <div id="meuCard1" class="meuCard w-43.5 h-91.5 swiper-slide  ">
-                        <div
-                            class="card w-11/12 h-full flex flex-col border border-gray-400 shadow-gray-600 rounded-md p-2">
-                            <span
-                                class="w-10 md:w-1/4 bg-[#00264E] text-white text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
-                                Novo
-                            </span>
+                        <div id="meuCard1" class="swiper-slide ">
+                            <div
+                                class="w-43.5 h-91  md:w-59.5 md:h-103 flex flex-col border border-gray-400 shadow-gray-600 rounded-md p-2">
+                                <span
+                                    class="w-10  md:w-1/4 bg-[#00264E] text-white text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
+                                    Novo
+                                </span>
 
-                            <img src="./assets/Images/homem-mock.png" class="w-55" alt="">
-                            <!-- 
+                                <img src="./assets/Images/homem-mock.png" class="w-55" alt="">
+                                <!-- 
                             <div class="bg-[url(./assets/Images/homem-mock.png)] bg-cover bg-center h-65 ">
                             </div> -->
-                            <div class="text-left text-[14px]  text-[#303030]">
-                                <h3>Lorem Impsum dolor sit amet consectetuer adipiscing elit</h3>
+                                <div class="text-left text-[14px]  text-[#303030]">
+                                    <h3>Lorem Impsum dolor sit amet consectetuer adipiscing elit</h3>
 
-                                <div class="flex items-center gap-3">
+                                    <div class="flex items-center gap-3">
+                                        <div>
+                                            <p class="line-through text-gray-500 text-[12px]">R$100.00</p>
+                                            <p class="font-bold text-[16px]">R$79.90</p>
+
+                                        </div>
+
+                                        <div class="bg-[#5EC0BE] rounded-lg py-0.5 px-1.5 cursor-pointer text-[11px]">
+                                            <a class="text-white underline ">10% <span class="font-bold">OFF</span></a>
+
+                                        </div>
+
+                                    </div>
+
+
                                     <div>
-                                        <p class="line-through text-gray-500 text-[12px]">R$100.00</p>
-                                        <p class="font-bold text-[16px]">R$79.90</p>
-
-                                    </div>
-
-                                    <div class="bg-[#5EC0BE] rounded-lg py-0.5 px-1.5 cursor-pointer text-[11px]">
-                                        <a class="text-white underline ">10% <span class="font-bold">OFF</span></a>
-
+                                        <p class="text-[#303030] text-[12px]">ou em ate <span class="font-semibold">10x
+                                                de
+                                                R$7,90</span>
+                                        </p>
                                     </div>
 
                                 </div>
+                                <button
+                                    class="bg-[#005cff] mt-2 hover:bg-[#004cd2] text-white font-bold text-[14px] px-6 py-2.5 rounded-lg transition-colors cursor-pointer">
+                                    Comprar
+                                </button>
 
-
-                                <div>
-                                    <p class="text-[#303030] text-[12px]">ou em ate <span class="font-semibold">10x de
-                                            R$7,90</span>
-                                    </p>
-                                </div>
 
                             </div>
-                            <button
-                                class="bg-[#005cff] mt-2 hover:bg-[#004cd2] text-white font-bold text-[14px] px-6 py-2.5 rounded-lg transition-colors cursor-pointer">
-                                Comprar
-                            </button>
 
 
                         </div>
-                    </div>
-                    <div id="meuCard1" class="meuCard w-43.5 h-91.5 swiper-slide  ">
-                        <div
-                            class="card w-11/12 h-full flex flex-col border border-gray-400 shadow-gray-600 rounded-md p-2">
-                            <span
-                                class="w-10 md:w-1/4 bg-[#00264E] text-white text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
-                                Novo
-                            </span>
+                        <div id="meuCard1" class="swiper-slide ">
+                            <div
+                                class="w-43.5 h-91  md:w-59.5 md:h-103 flex flex-col border border-gray-400 shadow-gray-600 rounded-md p-2">
+                                <span
+                                    class="w-10  md:w-1/4 bg-[#00264E] text-white text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
+                                    Novo
+                                </span>
 
-                            <img src="./assets/Images/homem-mock.png" class="w-55" alt="">
-                            <!-- 
+                                <img src="./assets/Images/homem-mock.png" class="w-55" alt="">
+                                <!-- 
                             <div class="bg-[url(./assets/Images/homem-mock.png)] bg-cover bg-center h-65 ">
                             </div> -->
-                            <div class="text-left text-[14px]  text-[#303030]">
-                                <h3>Lorem Impsum dolor sit amet consectetuer adipiscing elit</h3>
+                                <div class="text-left text-[14px]  text-[#303030]">
+                                    <h3>Lorem Impsum dolor sit amet consectetuer adipiscing elit</h3>
 
-                                <div class="flex items-center gap-3">
+                                    <div class="flex items-center gap-3">
+                                        <div>
+                                            <p class="line-through text-gray-500 text-[12px]">R$100.00</p>
+                                            <p class="font-bold text-[16px]">R$79.90</p>
+
+                                        </div>
+
+                                        <div class="bg-[#5EC0BE] rounded-lg py-0.5 px-1.5 cursor-pointer text-[11px]">
+                                            <a class="text-white underline ">10% <span class="font-bold">OFF</span></a>
+
+                                        </div>
+
+                                    </div>
+
+
                                     <div>
-                                        <p class="line-through text-gray-500 text-[12px]">R$100.00</p>
-                                        <p class="font-bold text-[16px]">R$79.90</p>
-
-                                    </div>
-
-                                    <div class="bg-[#5EC0BE] rounded-lg py-0.5 px-1.5 cursor-pointer text-[11px]">
-                                        <a class="text-white underline ">10% <span class="font-bold">OFF</span></a>
-
+                                        <p class="text-[#303030] text-[12px]">ou em ate <span class="font-semibold">10x
+                                                de
+                                                R$7,90</span>
+                                        </p>
                                     </div>
 
                                 </div>
+                                <button
+                                    class="bg-[#005cff] mt-2 hover:bg-[#004cd2] text-white font-bold text-[14px] px-6 py-2.5 rounded-lg transition-colors cursor-pointer">
+                                    Comprar
+                                </button>
 
-
-                                <div>
-                                    <p class="text-[#303030] text-[12px]">ou em ate <span class="font-semibold">10x de
-                                            R$7,90</span>
-                                    </p>
-                                </div>
 
                             </div>
-                            <button
-                                class="bg-[#005cff] mt-2 hover:bg-[#004cd2] text-white font-bold text-[14px] px-6 py-2.5 rounded-lg transition-colors cursor-pointer">
-                                Comprar
-                            </button>
 
 
                         </div>
+
+
+
+
+
+
+
+
+
                     </div>
-                    <div id="meuCard1" class="meuCard w-43.5 h-91.5 swiper-slide  ">
-                        <div
-                            class="card w-11/12 h-full flex flex-col border border-gray-400 shadow-gray-600 rounded-md p-2">
-                            <span
-                                class="w-10 md:w-1/4 bg-[#00264E] text-white text-[10px] text-center font-regular px-1.5 py-0.5 rounded-sm z-10 ">
-                                Novo
-                            </span>
+                    <div class="swiper-pagination"></div>
 
-                            <img src="./assets/Images/homem-mock.png" class="w-55" alt="">
-                            <!-- 
-                            <div class="bg-[url(./assets/Images/homem-mock.png)] bg-cover bg-center h-65 ">
-                            </div> -->
-                            <div class="text-left text-[14px]  text-[#303030]">
-                                <h3>Lorem Impsum dolor sit amet consectetuer adipiscing elit</h3>
-
-                                <div class="flex items-center gap-3">
-                                    <div>
-                                        <p class="line-through text-gray-500 text-[12px]">R$100.00</p>
-                                        <p class="font-bold text-[16px]">R$79.90</p>
-
-                                    </div>
-
-                                    <div class="bg-[#5EC0BE] rounded-lg py-0.5 px-1.5 cursor-pointer text-[11px]">
-                                        <a class="text-white underline ">10% <span class="font-bold">OFF</span></a>
-
-                                    </div>
-
-                                </div>
-
-
-                                <div>
-                                    <p class="text-[#303030] text-[12px]">ou em ate <span class="font-semibold">10x de
-                                            R$7,90</span>
-                                    </p>
-                                </div>
-
-                            </div>
-                            <button
-                                class="bg-[#005cff] mt-2 hover:bg-[#004cd2] text-white font-bold text-[14px] px-6 py-2.5 rounded-lg transition-colors cursor-pointer">
-                                Comprar
-                            </button>
-
-
-                        </div>
+                    <div class="swiper-button-prev prev-1 cursor-pointer ">
+                        <img src="./assets/svg/previous-arrow.svg" alt="" class="hidden md:flex">
                     </div>
-
-
-
-
+                    <div class="swiper-button-next next-1 cursor-pointer ">
+                        <img src="./assets/svg/next-arrow.svg" alt="" class="hidden md:block">
+                    </div>
 
                 </div>
-                <div class="swiper-pagination"></div>
-
-                <div class="swiper-button-prev prev-1 cursor-pointer ">
-                    <img src="./assets/svg/previous-arrow.svg" alt="" class="hidden md:flex">
-                </div>
-                <div class="swiper-button-next next-1 cursor-pointer ">
-                    <img src="./assets/svg/next-arrow.svg" alt="" class="hidden md:block">
-                </div>
-
             </div>
 
 
         </section>
+
 
 
         <!-- background avant -->
@@ -1518,7 +1608,7 @@
         <section class="flex flex-col justify-center items-center mt-18 gap-2 md:gap-4 ">
             <h1 class="  font-semibold">Cadastre-se na nossa <span class="text-[#005CFF]">newslette</span></h1>
 
-            <form class="
+            <form onsubmit="handleRgister(event)" class="
                 <!-- mobile -768  -->
                 w-full 
                 h-82.5 
@@ -1551,7 +1641,7 @@
 
                 <label for="idCadastroNome">
 
-                    <input id="idCadastroNome" type="text" placeholder="Digite seu nome" class="bg-white 
+                    <input id="idCadastroNome" type="text" required placeholder="Digite seu nome" class="bg-white 
                              px-5 py-3 
                              outline-none 
                              rounded-lg
@@ -1569,7 +1659,7 @@
 
                 <label for="idCadastroEmail">
 
-                    <input id="idCadastroEmail" type="email" placeholder="Digite seu e-mail" class="bg-white 
+                    <input id="idCadastroEmail" type="email" required placeholder="Digite seu e-mail" class="bg-white 
                         placeholder-[#303030] 
                         w-[90%] 
                         px-5 
@@ -1605,7 +1695,8 @@
 
                     ">
 
-                    <input type="checkbox" name="termos" id="termosCadastro" class="accent-[#005CFF] focus:ring-0">
+                    <input type="checkbox" name="termos" required id="termosCadastro"
+                        class="accent-[#005CFF] focus:ring-0">
                     Estou de acordo com a <a class="underline">Política de Privacidade</a>
                 </label>
 
@@ -1818,28 +1909,28 @@
                     <div class="flex justify-center items-center min-w-6">
                         <img src="./assets/svg/Payment-Icons/amex.svg" alt="">
                     </div>
-                    <div class="flex justify-center items-center min-w-[24px]">
+                    <div class="flex justify-center items-center min-w-6">
                         <img src="./assets/svg/Payment-Icons/mastercard.svg" alt="">
                     </div>
-                    <div class="flex justify-center items-center min-w-[24px]">
+                    <div class="flex justify-center items-center min-w-6">
                         <img src="./assets/svg/Payment-Icons/visa.svg" alt="">
                     </div>
-                    <div class="flex justify-center items-center min-w-[24px]">
+                    <div class="flex justify-center items-center min-w-6">
                         <img src="./assets/svg/Payment-Icons/hipercard.svg" alt="">
                     </div>
-                    <div class="flex justify-center items-center min-w-[24px]">
+                    <div class="flex justify-center items-center min-w-6">
                         <img src="./assets/svg/Payment-Icons/elo.svg" alt="">
                     </div>
-                    <div class="flex justify-center items-center min-w-[24px]">
+                    <div class="flex justify-center items-center min-w-6">
                         <img src="./assets/svg/Payment-Icons/b(1).svg" alt="">
                     </div>
-                    <div class="flex justify-center items-center min-w-[24px]">
-                        <img src="./assets/svg/Payment-Icons/paypal-seeklogo.com.svg" alt="">
+                    <div class="flex justify-center items-center min-w-6">
+                        <img src="./assets/svg/Payment-Icons/paypal.svg" alt="">
                     </div>
-                    <div class="flex justify-center items-center min-w-[24px]">
+                    <div class="flex justify-center items-center min-w-6">
                         <img src="./assets/svg/Payment-Icons/pix.svg" alt="">
                     </div>
-                    <div class="flex justify-center items-center min-w-[24px]">
+                    <div class="flex justify-center items-center min-w-6">
                         <img src="./assets/svg/Payment-Icons/boleto.svg" alt="">
                     </div>
                 </div>
@@ -1887,7 +1978,7 @@
 
 
 
-
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
     <script src="./script.js"></script>
 </body>
 
