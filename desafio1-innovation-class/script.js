@@ -1,37 +1,3 @@
-
-let swiper = new Swiper(".mySwiper1", {
-    slidesPerView: 5,
-    slidesPerGroup: 3,
-
-    loop: true,
-    pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-    },
-    navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-    },
-    breakpoints: {
-
-       
-        480: {
-            slidesPerView: 2,
-
-        },
-     
-        768: {
-            slidesPerView: 4,
-
-        },
-        1024: {
-            slidesPerView: 5,
-        }
-
-
-    }
-});
-
 let swiper2 = new Swiper(".mySwiper2", {
     slidesPerView: 2,
     slidesPerGroup: 3,
@@ -51,12 +17,15 @@ let swiper2 = new Swiper(".mySwiper2", {
             slidesPerView: 2,
 
         },
-        
+
         768: {
-            slidesPerView: 4,
+            slidesPerView: 3,
 
         },
-        1024:{
+        1024: {
+            slidesPerView: 4,
+        },
+        1536: {
             slidesPerView: 5,
         }
 
@@ -69,9 +38,10 @@ let swiper2 = new Swiper(".mySwiper2", {
 const dropMenu = document.getElementById("drop-menu")
 const dropConteiner = document.getElementById("drop-menu-container")
 const dropOver = document.getElementById("drop-menu-over")
-const dropCategoria = document.querySelectorAll(".cadegoria")
+const optionDepartamento = document.querySelectorAll(".cadegoria")
 const menuCategoria = document.getElementById("category-menu")
-
+const menuCategoria2 = document.getElementById("category-menu2")
+const optionDepartamento2 = document.querySelectorAll('.option-departamento')
 
 // mobileHtml
 
@@ -83,10 +53,41 @@ const arrowInstitucional = document.getElementById("arrow-institucional")
 const arrowCentral = document.getElementById("arrow-central")
 const arrowAtendimento = document.getElementById("arrow-atendimento")
 
+
+const menuArrowMobile = document.querySelectorAll(".mobile-arrow")
+
+const navBar = document.getElementById("nav-bar")
+
+function openOptionMobile(){
+
+    navBar.classList.toggle("menuMobileOpen")
+    navBar.classList.add("left-0","w-full")
+    
+    
+}
+function closeOptionMobile() {
+
+    navBar.classList.toggle("menuMobileClose")
+  navBar.classList.remove("left-0","w-full")
+
+    
+}
+
 function handleSerch(e) {
     e.preventDefault()
-    const search = document.getElementById("search")
+
+    let idInput = 'search'
+
+    if (isMobile) {
+
+        idInput = "search-mobile"
+
+    }
+
+    const search = document.getElementById(idInput)
     const searchResponse = document.getElementById("searchResponse")
+
+
 
     searchResponse.style.display = "flex"
 
@@ -96,14 +97,36 @@ function handleSerch(e) {
 
 }
 
-function handleRgister(e){
+function handleRgister(e) {
     e.preventDefault()
 }
+
+optionDepartamento2.forEach(element => {
+    
+    
+    element.addEventListener("mouseenter", () => {
+        menuCategoria2.style.display = "flex";
+    });
+
+
+    element.addEventListener("mouseleave", (e) => {
+        console.log(!menuCategoria2.contains(e.relatedTarget));
+        
+        if (!menuCategoria2.contains(e.relatedTarget)) {
+            menuCategoria.style.display = "none";
+        }
+    });
+});
+
+menuCategoria2.addEventListener("mouseleave",()=>{
+
+    menuCategoria2.style.display = "none";
+    });
 
 dropMenu.addEventListener("mouseenter", () => {
     dropConteiner.style.display = "flex"
 })
-dropCategoria.forEach(element => {
+optionDepartamento.forEach(element => {
     element.addEventListener("mouseenter", () => {
         menuCategoria.style.display = "flex";
     });
@@ -119,7 +142,7 @@ dropCategoria.forEach(element => {
 menuCategoria.addEventListener("mouseleave", (e) => {
 
     let voltoCategoria = false;
-    dropCategoria.forEach(element => {
+    optionDepartamento.forEach(element => {
         if (element.contains(e.relatedTarget)) voltoCategoria = true;
     });
 
@@ -144,8 +167,17 @@ function esconderConteinerMobile() {
     arrowCentral.classList.remove('rotacionado')
     arrowInstitucional.classList.remove('rotacionado')
 
+
+    menuArrowMobile?.forEach((element, i) => {
+        const divOption = document.getElementById(`mobile-cadegoria-${i}`)
+        const arrow = element.querySelector("img")
+
+        arrow?.classList.remove("rotacionado")
+        divOption.style.display = "none"
+
+    })
 }
-const displeyarrowFooter = (div, arrow) => {
+const displayArrow = (div, arrow) => {
 
     const display = window.getComputedStyle(div);
 
@@ -162,18 +194,39 @@ const displeyarrowFooter = (div, arrow) => {
 
 }
 arrowAtendimento.addEventListener("click", () => {
-    displeyarrowFooter(mobileAtendimento, arrowAtendimento)
+    displayArrow(mobileAtendimento, arrowAtendimento)
 
 })
 
 arrowCentral.addEventListener("click", () => {
 
-    displeyarrowFooter(mobileCentral, arrowCentral)
+    displayArrow(mobileCentral, arrowCentral)
 })
 arrowInstitucional.addEventListener("click", () => {
 
-    displeyarrowFooter(mobileInstitucional, arrowInstitucional)
+    displayArrow(mobileInstitucional, arrowInstitucional)
 
 
 })
+
+menuArrowMobile?.forEach((element, i) => {
+
+
+    const divOption = document.getElementById(`mobile-cadegoria-${i}`)
+
+
+    element.addEventListener("click", () => {
+
+        const arrow = element.querySelector('img')
+
+        displayArrow(divOption, arrow)
+
+
+    })
+
+})
+
+
+
+
 
