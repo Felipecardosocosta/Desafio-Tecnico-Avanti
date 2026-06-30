@@ -73,12 +73,15 @@ function closeOptionMobile() {
     
 }
 
+const widthMobile = 768
+
+const isMobile = () => window.innerWidth < widthMobile;
 function handleSerch(e) {
     e.preventDefault()
 
     let idInput = 'search'
 
-    if (isMobile) {
+    if (isMobile()) {
 
         idInput = "search-mobile"
 
